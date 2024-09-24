@@ -12,26 +12,47 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <cucumber-junit.version>1.2.5</cucumber-junit.version>
+    <cucumber-junit.version>7.11.0</cucumber-junit.version>
     <rest-assured.version>5.3.0</rest-assured.version>
     <rest-assured-jsonPath.version>5.3.0</rest-assured-jsonPath.version>
     <commons-lang3.version>3.12.0</commons-lang3.version>
     <commons-configuration2.version>2.10.1</commons-configuration2.version>
+    <commons-text.version>1.10.0</commons-text.version>
+    <common-io.version>2.11.0</common-io.version>
     <cucumber-reporting.version>5.7.4</cucumber-reporting.version>
+    <allure.version>2.24.0</allure.version>
+    <junit.version>4.13.1</junit.version>
+    <log4j.version>2.20.0</log4j.version>
+    <common-beansutils.version>1.9.4</common-beansutils.version>
+    <cucumber-reporting.version>5.0.0</cucumber-reporting.version>
+    <spring-web.version>5.3.22</spring-web.version>
   </properties>
+
+  <!-- Add allure-bom to dependency management to ensure correct versions of all the dependencies are used -->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-bom</artifactId>
+        <version>${allure.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.13.1</version>
+      <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
-      <version>20231013</version> <!-- Check for the latest version -->
+      <version>20231013</version>
     </dependency>
 
 
@@ -56,21 +77,21 @@
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java</artifactId>
-      <version>7.11.0</version>
+      <version>${cucumber-junit.version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-junit</artifactId>
-      <version>7.11.0</version>
+      <version>${cucumber-junit.version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-core</artifactId>
-      <version>7.11.0</version>
+      <version>${cucumber-junit.version}</version>
     </dependency>
 
     <dependency>
@@ -81,7 +102,7 @@
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-text</artifactId>
-      <version>1.10.0</version>
+      <version>${commons-text.version}</version>
     </dependency>
 
     <dependency>
@@ -93,33 +114,37 @@
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <version>2.11.0</version>
+      <version>${common-io.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j-impl</artifactId>
-      <version>2.20.0</version> <!-- or the latest version -->
+      <version>${log4j.version}</version>
     </dependency>
 
     <dependency>
       <groupId>commons-beanutils</groupId>
       <artifactId>commons-beanutils</artifactId>
-      <version>1.9.4</version>
+      <version>${common-beansutils.version}</version>
     </dependency>
     <dependency>
       <groupId>net.masterthought</groupId>
       <artifactId>cucumber-reporting</artifactId>
-      <version>5.0.0</version>
+      <version>${cucumber-reporting.version}</version>
       <scope>test</scope>
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>org.testng</groupId>-->
-<!--      <artifactId>testng</artifactId>-->
-<!--      <version>RELEASE</version>-->
-<!--      <scope>test</scope>-->
-<!--    </dependency>-->
-
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>${spring-web.version}</version>
+    </dependency>
+    <!-- Add necessary Allure dependencies to dependencies section -->
+      <dependency>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-cucumber7-jvm</artifactId>
+        <scope>test</scope>
+      </dependency>
 
   </dependencies>
 

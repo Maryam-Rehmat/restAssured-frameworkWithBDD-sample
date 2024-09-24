@@ -33,44 +33,5 @@ public class Utils {
         return json;
     }
 
-    public static String getPropertyValue(String fileName, String property) {
-        String root = System.getProperty("user.dir");
-        File file = Paths.get(root, "src", "test", "resources", "config", fileName).toFile();
-        Properties properties = new Properties();
-        String value = "";
-        try {
-            InputStream targetStream = new FileInputStream(file);
-            properties.load(targetStream);
-            value = properties.getProperty(property);
-        } catch (FileNotFoundException ex) {
-            logger.error(Utils.class.getName(), ex);
-        } catch (IOException ex) {
-            logger.error(Utils.class.getName(), ex);
-        }
-        return value;
-    }
-
-    public static String getJsonStringFromFile(String objectName, File file) {
-        String json = Utils.readFromJsonFile(file);
-        String objectResponse = "";
-        try {
-            JSONObject jsonObj = new JSONObject(json);
-            objectResponse = jsonObj.getString(objectName);
-        } catch (JSONException ex) {
-            logger.error(Utils.class.getName(), ex);
-        }
-        return objectResponse;
-    }
-
-    public static JSONObject getJsonObjectFromFile(String objectName, File file) {
-        String json = Utils.readFromJsonFile(file);
-        JSONObject jsonObj = null;
-        try {
-            jsonObj = new JSONObject(json).getJSONObject(objectName);
-        } catch (JSONException ex) {
-            logger.error(Utils.class.getName(), ex);
-        }
-        return jsonObj;
-    }
 
 }
